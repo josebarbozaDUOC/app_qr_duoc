@@ -1,0 +1,71 @@
+<!--uso de ANIMATE: https://animate.style/-->
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+
+<!--HEADER-->
+<ion-header>
+  <ion-toolbar>
+    <ion-item>
+      <!--Mostrar el logo DUOC-->
+      <img class="logo animate__animated animate__pulse" 
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_DuocUC.svg/1024px-Logo_DuocUC.svg.png">
+
+    </ion-item>
+    <ion-title #titulo>
+      <div class="animate__animated animate__fadeInLeft">Sistema de Asistencia QR</div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!--BODY-->
+<ion-content>
+  <div class="ion-padding-vertical">
+
+    <!--Mostrar seudoTABS-->
+    <ion-row>
+      <ion-col size="6">
+        <ion-button shape="block" (click)="inicio()">Inicio</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button shape="block" (click)="clase()">Mi clase</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!--TÍTULO-->
+    <ion-card-title class="ion-text-center">
+      <ion-label>
+        <h4 class="animate__animated animate__pulse">Datos de Clase</h4>
+      </ion-label>
+    </ion-card-title>
+
+    <!--DATOS DEL QR-->
+    <ion-card-title>
+      <ion-card class="animate__animated animate__zoomIn">
+        <table *ngIf="datosAsignatura">
+          <tr><td class="espaciado">Sede</td><td>{{ datosAsignatura.sede }}</td></tr>
+          <tr><td>Sigla</td>                <td>{{ datosAsignatura.sigla }}</td></tr>
+          <tr><td>Seccion</td>              <td>{{ datosAsignatura.seccion }}</td></tr>
+          <tr><td>Nombre de Asignatura</td> <td>{{ datosAsignatura.nombreAsignatura }}</td></tr>
+          <tr><td>Nombre de Profesor</td>   <td>{{ datosAsignatura.nombreProfesor }}</td></tr>
+          <tr><td>Dia</td>                  <td>{{ datosAsignatura.dia }}</td></tr>
+          <tr><td>Bloque de Inicio</td>     <td>{{ datosAsignatura.bloqueInicio }}</td></tr>
+          <tr><td>Bloque de Termino</td>    <td>{{ datosAsignatura.bloqueTermino }}</td></tr>
+          <tr><td>Hora de Inicio</td>       <td>{{ datosAsignatura.horaInicio }}</td></tr>
+          <tr><td>Hora de Termino</td>      <td>{{ datosAsignatura.horaTermino }}</td></tr>
+        </table>
+      </ion-card>
+    </ion-card-title>
+
+    <!--Mostrar CIERRE DE SESIÓN-->
+    <ion-card class="ion-text-center ion-padding-vertical">
+      <ion-label>
+        <a routerLink="">Cerrar sesión</a>
+      </ion-label>
+    </ion-card>
+  
+  </div>
+</ion-content>

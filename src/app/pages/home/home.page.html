@@ -1,0 +1,114 @@
+<!--uso de ANIMATE: https://animate.style/-->
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-item>
+      <!--Mostrar el logo DUOC-->
+      <img class="logo animate__animated animate__pulse" 
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_DuocUC.svg/1024px-Logo_DuocUC.svg.png">
+
+    </ion-item>
+    <ion-title #titulo>
+      <div class="animate__animated animate__fadeInLeft">Sistema de Asistencia QR</div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!--Mostrar seudoTABS-->
+<ion-content>
+  <div class="ion-padding-vertical">
+
+    
+    <ion-row>
+      <ion-col size="6">
+        <ion-button shape="block" (click)="inicio()">Inicio</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button shape="block" (click)="clase()">Mi clase</ion-button>
+      </ion-col>
+    </ion-row>
+    
+    
+    <!--
+    <ion-tabs>
+      <ion-tab-bar slot="top">
+        <ion-tab-button tab="tab1">
+          <ion-icon name="flash"></ion-icon>
+          <ion-label>Inicio</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="tab2">
+          <ion-icon name="apps"></ion-icon>
+          <ion-label>Clase</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+    <br><br><br>
+    -->
+
+    <ion-card-title class="ion-text-center">
+      <ion-label>
+        <h2 class="animate__animated animate__tada" 
+          *ngIf="usuario"> ¡Bienvenido {{ usuario.nombre }}!</h2>
+      </ion-label>
+    </ion-card-title>
+    
+    <ion-card-title class="ion-text-center">
+      <!--Mostrar DESCRIPCIÓN-->
+      <ion-label>
+        <h5 class="animate__animated animate__fadeIn">
+          Escanea el código QR para registrar tu asistencia a clases</h5>
+      </ion-label>
+
+      <!--Mostrar EL VISUALIZADOR QR-->
+      <ion-card class="ion-align-items-center animate__animated animate__zoomIn">
+
+        <ion-item *ngIf="isVisible" class="ion-align-items-center">
+          <!--Mostrar el img qr-->
+          <img #qrimage class="qrcode ion-align-items-center animate__animated animate__pulse" 
+            src="https://www.nicepng.com/png/detail/504-5048494_scan-qr-code-svg-scan-icon-png.png">
+        </ion-item>
+
+        <video #video [hidden]="!escaneando" width="100%"></video>
+        <canvas #canvas hidden></canvas>
+      
+        <input #fileinput hidden id="input-file" type="file" accept="image/*;capture=camera" 
+        (change)="verificarArchivoQR($event.target.files)" />
+      
+        <ion-button (click)="cargarImagen()" expand="full" shape="round">
+          <ion-icon slot="start" name="camera"></ion-icon>
+          Cargar Imagen con Código QR
+        </ion-button>
+      
+        <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" color="success" expand="full" shape="round">
+          <ion-icon slot="start" name="videocam-outline"></ion-icon>
+          Comenzar Escaneo de QR
+        </ion-button>
+      
+        <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()" color="danger" expand="full" shape="round">
+          <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
+          Detener escaneo de QR
+        </ion-button>
+      
+        <ion-button (click)="limpiarDatos()" color="warning" expand="block" expand="full" shape="round">
+          <ion-icon slot="start" name="trash-outline"></ion-icon>
+          Limpiar datos
+        </ion-button>
+
+      </ion-card>
+    </ion-card-title>
+
+    <!--Mostrar CIERRE DE SESIÓN-->
+    <ion-card class="ion-text-center ion-padding-vertical">
+      <ion-label>
+        <a routerLink="">Cerrar sesión</a>
+      </ion-label>
+    </ion-card>
+
+  </div>
+</ion-content>

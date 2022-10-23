@@ -1,0 +1,48 @@
+<!--uso de ANIMATE: https://animate.style/-->
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+
+<ion-content>
+  <ion-title class="ion-padding-top ion-text-center">
+    <ion-label>
+      <img class="logo animate__animated animate__fadeInLeft" 
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_DuocUC.svg/1024px-Logo_DuocUC.svg.png">
+
+      <h1 class="animate__animated animate__fadeInRight">Asistencia QR</h1>
+      <p class="animate__animated animate__fadeInLeft">Tu app para siempre quedar presente</p>
+    </ion-label>
+  </ion-title>
+
+  <div class="ion-padding-vertical">
+    <ion-card class="ion-text-center ion-padding-vertical animate__animated animate__zoomIn">
+
+      <ion-card-title class="ion-text-center">
+        <ion-label>
+          <h3>Recuperar contraseña</h3>
+        </ion-label>
+      </ion-card-title>
+
+      <ion-card-content>
+        <ion-item>
+          <img class="successbob animate__animated animate__fadeInLeft" 
+        src="https://i.pinimg.com/236x/a3/91/45/a3914535a0dc40f5adf785ab90cbef42.jpg">
+        </ion-item>
+
+        <h2 class="nopadding">Correcto</h2>
+        <h4 class="nopadding">Tu contraseña es</h4>
+        <h1 class="nopadding animate__animated animate__tada" 
+        *ngIf="usuario">{{ usuario.password }}</h1>
+
+      </ion-card-content>
+
+      <ion-label>
+        <a routerLink="">Iniciar Sesión</a>
+      </ion-label>
+
+    </ion-card>
+  </div>
+</ion-content>
