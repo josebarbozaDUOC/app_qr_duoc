@@ -2,40 +2,30 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
 
+import { LectorQrComponent } from './../../components/lector-qr/lector-qr.component';
+import { MiClaseComponent } from '../../components/mi-clase/mi-clase.component';
+import { MiApiComponent } from '../../components/mi-api/mi-api.component';
+
 const routes: Routes = [
   {
     path: '',
-    component: HomePage
-  }
-];
-/*
-const routes: Routes = [
-  {
-    path: 'home',
     component: HomePage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        path: 'lector-qr',
+        component: LectorQrComponent
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        path: 'mi-clase',
+        component: MiClaseComponent
       },
       {
-        path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full'
+        path: 'mi-api',
+        component: MiApiComponent
       }
     ]
   },
-  {
-    path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
-  }
-];*/
-
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
